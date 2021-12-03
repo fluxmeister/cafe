@@ -1,6 +1,7 @@
 # Cafe
 ### WebApp Template ###  
-011221	: 
+031221	: WordPress 5.8.2  
+		
 *************************************************************************************************** 
 ***************************************************************************************************  
 090521	: Hello Elementor Child theme install  
@@ -30,6 +31,23 @@ Create a WordPress Theme with Twitter Bootstrap
 *****************************************************************************************************
 # Become a WordPress Developer: Unlocking Power with Code #
 " https://www.youtube.com/watch?v=FVqzKAUsM68&ab_channel=LearnWebCode "  
+
+0:0:14 Quick Overview
+0:2:06 Detailed Overview
+0:12:05 Installing WordPress Locally
+0:25:35 First Taste of PHP
+0:41:55 Create Theme
+0:54:20 Functions
+1:09:14 Arrays
+1:21:43 The Loop
+1:36:10 Header & Footer
+1:54:44 Convert HTML/CSS Into Theme
+2:14:42 Interior Page Template
+2:32:28 Parent / Child Pages
+2:49:16 When do we need to echo?
+2:58:17 Children Links Menu
+
+
   
 The WordPress REST API:	https://developer.wordpress.org/rest-api/reference/	|| sitename/wp-json/wp/v2/resource  
 
