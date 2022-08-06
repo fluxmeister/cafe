@@ -36,7 +36,7 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 		);
 	}
 
-	function get_widget_form(){
+	function get_widget_form() {
 
 		return array(
 			'features' => array(
@@ -44,14 +44,20 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 				'label' => __( 'Features', 'so-widgets-bundle' ),
 				'item_name' => __( 'Feature', 'so-widgets-bundle' ),
 				'item_label' => array(
-					'selector'     => "[id*='features-title']",
-					'update_event' => 'change',
-					'value_method' => 'val'
+					'selectorArray' => array(
+						array(
+							'selector' => '[id*="features-title"]',
+							'valueMethod' => 'val'
+						),
+						array(
+							'selector' => '[id*="features-icon"]',
+							'valueMethod' => 'val'
+						),
+					),
 				),
 				'fields' => array(
 
 					// The container shape
-
 					'container_color' => array(
 						'type' => 'color',
 						'label' => __( 'Icon container color', 'so-widgets-bundle' ),
@@ -59,21 +65,19 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 					),
 
 					// Left and right array keys are swapped due to a mistake that couldn't be corrected without disturbing existing users.
+					'container_position' => array(
+						'type' => 'select',
+						'label' => __( 'Icon container position', 'so-widgets-bundle' ),
+						'options' => array(
+							'top'    => __( 'Top', 'so-widgets-bundle' ),
+							'left'  => __( 'Right', 'so-widgets-bundle' ),
+							'bottom' => __( 'Bottom', 'so-widgets-bundle' ),
+							'right'   => __( 'Left', 'so-widgets-bundle' ),
+						),
+						'default' => 'top',
+					),
 
-                    'container_position' => array(
-                        'type' => 'select',
-                        'label' => __( 'Icon container position', 'so-widgets-bundle' ),
-                        'options' => array(
-                            'top'    => __( 'Top', 'so-widgets-bundle' ),
-                            'left'  => __( 'Right', 'so-widgets-bundle' ),
-                            'bottom' => __( 'Bottom', 'so-widgets-bundle' ),
-                            'right'   => __( 'Left', 'so-widgets-bundle' ),
-                        ),
-                        'default' => 'top',
-                    ),
-
-					// The Icon
-
+					// The icon.
 					'icon' => array(
 						'type' => 'icon',
 						'label' => __( 'Icon', 'so-widgets-bundle' ),
@@ -87,7 +91,7 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 					'icon_color' => array(
 						'type' => 'color',
 						'label' => __( 'Icon color', 'so-widgets-bundle' ),
-						'default' => '#FFFFFF',
+						'default' => '#fff',
 					),
 
 					'icon_image' => array(
@@ -103,8 +107,7 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 						'label' => __( 'Icon image size', 'so-widgets-bundle' ),
 					),
 
-					// The text under the icon
-
+					// The text under the icon.
 					'title' => array(
 						'type' => 'text',
 						'label' => __( 'Title text', 'so-widgets-bundle' ),
@@ -336,6 +339,28 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 		return $less_vars;
 	}
 
+	function get_feature_flex_direction( $position ) {
+		switch ( $position ) {
+			case 'top':
+				$style = 'column';
+				break;
+			
+			case 'right':
+				$style = 'row';
+				break;
+			
+			case 'bottom':
+				$style = 'column-reverse';
+				break;
+			
+			case 'left':			
+			default:
+				$style = 'row-reverse';
+				break;
+		}
+		return $style;
+	}
+
 	function get_settings_form() {
 		return array(
 			'responsive_breakpoint' => array(
@@ -364,4 +389,4 @@ class SiteOrigin_Widget_Features_Widget extends SiteOrigin_Widget {
 	}
 }
 
-siteorigin_widget_register('sow-features', __FILE__, 'SiteOrigin_Widget_Features_Widget');
+siteorigin_widget_register( 'sow-features', __FILE__, 'SiteOrigin_Widget_Features_Widget' );

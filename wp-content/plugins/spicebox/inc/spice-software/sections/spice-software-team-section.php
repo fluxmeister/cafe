@@ -9,7 +9,7 @@ $team_smooth_speed = get_theme_mod('team_smooth_speed', 1000);
 $team_nav_style = get_theme_mod('team_nav_style', 'bullets');
 $isRTL = (is_rtl()) ? (bool) true : (bool) false;
 $teamsettings = array('team_animation_speed' => $team_animation_speed, 'team_smooth_speed' => $team_smooth_speed, 'team_nav_style' => $team_nav_style, 'rtl' => $isRTL);
-wp_register_script('spice-software-team', SPICEB_PLUGIN_URL . '/inc/spice-software/js/front-page/team.js', array('jquery'));
+wp_register_script('spice-software-team', SPICEB_PLUGIN_URL . 'inc/spice-software/js/front-page/team.js', array('jquery'));
 wp_localize_script('spice-software-team', 'team_settings', $teamsettings);
 wp_enqueue_script('spice-software-team');
 
@@ -201,7 +201,7 @@ if ($team_section_enable != false) {?>
                                     <?php
                                     $icons = html_entity_decode($team_item->social_repeater);
                                     $icons_decoded = json_decode($icons, true);
-                                    $socails_counts = count($icons_decoded);
+                                    $socails_counts = $icons_decoded;
                                     if (!empty($socails_counts)) :
                                         ?> <?php if (!empty($icons_decoded)) : ?>
                                             <ul class="list-inline list-unstyled ml-0 mt-1 mb-1">
@@ -285,7 +285,7 @@ if ($team_section_enable != false) {?>
                                     <?php
                                     $icons = html_entity_decode($team_item->social_repeater);
                                     $icons_decoded = json_decode($icons, true);
-                                    $socails_counts = count($icons_decoded);
+                                    $socails_counts = $icons_decoded;
                                     if (!empty($socails_counts)) :
                                         if (!empty($icons_decoded)) : ?>
                                             <ul class="list-inline list-unstyled">

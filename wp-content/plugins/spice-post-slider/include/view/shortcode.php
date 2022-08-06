@@ -152,7 +152,7 @@ if ( !function_exists( 'sps_shortcode' ) ) {
             jQuery("#blog-carousel<?php echo intval($sps_post_id);?>").owlCarousel({
                 navigation : true, // Show next and prev buttons        
                 autoplay: true,
-                autoplayTimeout: 1500,
+                autoplayTimeout: <?php echo intval($sps_speed);?> + 700,
                 autoplayHoverPause: true,
                 smartSpeed: <?php echo intval($sps_speed);?>,
                 loop:true, // loop is true up to 1199px screen.
@@ -172,52 +172,81 @@ if ( !function_exists( 'sps_shortcode' ) ) {
         });
        </script>
        <style type="text/css">
-            .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content h3 a
+            body .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content h3 a
                 {
-                    font-family: <?php echo esc_attr($sps_title_ff);?>;
+                    font-family: '<?php echo esc_attr($sps_title_ff);?>';
                     font-size: <?php echo intval($sps_title_fs);?>px;
                     line-height: <?php echo intval($sps_title_lheight);?>px;
                     font-weight: <?php echo intval($sps_title_fw);?>;
                     font-style: <?php echo esc_attr($sps_title_fstyle);?>;
                     text-transform: <?php echo esc_attr($sps_title_trans);?>;
                 }
-            .sps<?php echo intval($sps_post_id);?> .entry-content p, .sps<?php echo intval($sps_post_id);?> .entry-content span
+            body .sps<?php echo intval($sps_post_id);?> .entry-content p, body .sps<?php echo intval($sps_post_id);?> .entry-content span
                 {
-                    font-family: <?php echo esc_attr($sps_content_ff);?>;
+                    font-family: '<?php echo esc_attr($sps_content_ff);?>';
                     font-size: <?php echo intval($sps_content_fs);?>px;
                     line-height: <?php echo intval($sps_content_lheight);?>px;
                     font-weight: <?php echo intval($sps_content_fw);?>;
                     font-style: <?php echo esc_attr($sps_content_fstyle);?>;
                     text-transform: <?php echo esc_attr($sps_content_trans);?>;
                 }
-            .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content .entry-meta a
+            body .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content .entry-meta a
                 {
-                    font-family: <?php echo esc_attr($sps_meta_ff);?>;
+                    font-family: '<?php echo esc_attr($sps_meta_ff);?>';
                     font-size: <?php echo intval($sps_meta_fs);?>px;
                     line-height: <?php echo intval($sps_meta_lheight);?>px;
                     font-weight: <?php echo intval($sps_meta_fw);?>;
                     font-style: <?php echo esc_attr($sps_meta_fstyle);?>;
                     text-transform: <?php echo esc_attr($sps_meta_trans);?>;           
                 }
-            .sps<?php echo intval($sps_post_id);?> .post .more-link
+            body .sps<?php echo intval($sps_post_id);?> .post .more-link
                 {
-                    font-family: <?php echo esc_attr($sps_read_ff);?>;
+                    font-family: '<?php echo esc_attr($sps_read_ff);?>';
                     font-size: <?php echo intval($sps_read_fs);?>px;
                     line-height: <?php echo intval($sps_read_lheight);?>px;
                     font-weight: <?php echo intval($sps_read_fw);?>;
                     font-style: <?php echo esc_attr($sps_read_fstyle);?>;
                     text-transform: <?php echo esc_attr($sps_read_trans);?>; 
                 }    
-            .sps<?php echo intval($sps_post_id);?> .entry-meta i {color: <?php echo esc_attr($sps_icon_clr);?>;}
-            .sps<?php echo intval($sps_post_id);?> .entry-meta a{color:<?php echo esc_attr($sps_meta_clr);?> !important;}
-            .sps<?php echo intval($sps_post_id);?> .entry-meta a:hover{color: <?php echo esc_attr($sps_meta_hov_clr);?> !important ;}
-            .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content h3 a{color: <?php echo esc_attr($sps_title_clr);?>;}
-            .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content h3 a:hover{color: <?php echo esc_attr($sps_title_hov_clr);?>;}
-            .sps<?php echo intval($sps_post_id);?> .post .more-link{background: <?php echo esc_attr($sps_btn_bg_clr);?>; color: <?php echo esc_attr($sps_btn_txt_clr);?> !important;}
-            .sps<?php echo intval($sps_post_id);?> .post .more-link:hover{background: <?php echo esc_attr($sps_btn_bg_hov_clr);?>; color: <?php echo esc_attr($sps_btn_txt_hov_clr);?> !important;}
-            .sps<?php echo intval($sps_post_id);?> .entry-content p{color: <?php echo esc_attr($sps_content_clr);?>;}
-            .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-prev:hover, .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-prev:focus, .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-next:hover, .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-next:focus {background-color: <?php echo esc_attr($sps_nav_clr);?>;}
-            .sps<?php echo intval($sps_post_id);?> .owl-theme .owl-dots .owl-dot.active span {background-color: <?php echo esc_attr($sps_nav_clr);?>;}
+            body .sps<?php echo intval($sps_post_id);?> .entry-meta i {
+                color: <?php echo esc_attr($sps_icon_clr);?>;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .entry-meta a {
+                color:<?php echo esc_attr($sps_meta_clr);?> !important;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .entry-meta a:hover {
+                color: <?php echo esc_attr($sps_meta_hov_clr);?> !important;
+            }
+            body .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content h3 a {
+                color: <?php echo esc_attr($sps_title_clr);?>;
+            }
+            body .sps<?php echo intval($sps_post_id);?>.page-section-space.blog .post .post-content h3 a:hover{ 
+                color: <?php echo esc_attr($sps_title_hov_clr);?>;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .post .more-link {
+                background: <?php echo esc_attr($sps_btn_bg_clr);?>; 
+                color: <?php echo esc_attr($sps_btn_txt_clr);?> !important;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .post .more-link i{
+                color: <?php echo esc_attr($sps_btn_txt_clr);?> !important;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .post .more-link:hover {
+                background: <?php echo esc_attr($sps_btn_bg_hov_clr);?>; 
+                color: <?php echo esc_attr($sps_btn_txt_hov_clr);?> !important;
+                border: 1px solid <?php echo esc_attr($sps_btn_bg_hov_clr);?>;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .post .more-link:hover i{
+                color: <?php echo esc_attr($sps_btn_txt_hov_clr);?> !important;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .entry-content p {
+                color: <?php echo esc_attr($sps_content_clr);?>;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-prev:hover, body .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-prev:focus, body .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-next:hover, body .sps<?php echo intval($sps_post_id);?> .owl-carousel .owl-next:focus {
+                background-color: <?php echo esc_attr($sps_nav_clr);?>;
+            }
+            body .sps<?php echo intval($sps_post_id);?> .owl-theme .owl-dots .owl-dot.active span {
+                background-color: <?php echo esc_attr($sps_nav_clr);?>;
+            }
         </style>
         <?php
         return ob_get_clean();

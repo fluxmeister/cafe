@@ -263,13 +263,16 @@ jQuery(document).ready(function () {
      * This adds a new box to repeater
      *
      */
-      theme_conrols.on('click', '#customize-control-busicare_service_content .customizer-repeater-new-field,#customize-control-spice_software_service_content .customizer-repeater-new-field,#customize-control-spiko_service_content .customizer-repeater-new-field', function () { 
+     theme_conrols.on('click', '#customize-control-busicare_service_content .customizer-repeater-new-field,#customize-control-spice_software_service_content .customizer-repeater-new-field,#customize-control-spiko_service_content .customizer-repeater-new-field,#customize-control-wpkites_service_content .customizer-repeater-new-field,#customize-control-wphester_service_content .customizer-repeater-new-field,#customize-control-wpblack_service_content .customizer-repeater-new-field', function () { 
 
         if(jQuery("#spiceb_service_limit").val()==3)
         {
            jQuery(".customizer_busicareservice_upgrade_section").show();
            jQuery(".customizer_spice_software_service_upgrade_section").show();
            jQuery(".customizer_spiko_service_upgrade_section").show();
+           jQuery(".customizer_wpkites_service_upgrade_section").show();
+           jQuery(".customizer_wphester_service_upgrade_section").show();
+           jQuery(".customizer_wpblack_service_upgrade_section").show();
            return false;
         }
         else if(jQuery("#spiceb_service_limit").val()<4)
@@ -368,13 +371,17 @@ jQuery(document).ready(function () {
                jQuery(".customizer_busicareservice_upgrade_section").hide();
                jQuery(".customizer_spice_software_service_upgrade_section").hide();
                jQuery(".customizer_spiko_service_upgrade_section").hide();
+               jQuery(".customizer_wpkites_service_upgrade_section").hide();
+               jQuery(".customizer_wphester_service_upgrade_section").hide();
+               jQuery(".customizer_wpblack_service_upgrade_section").hide();
+               
             }
         }
 
         return false;
     });
 
-theme_conrols.on('click', '#customize-control-busicare_team_content .customizer-repeater-new-field,#customize-control-busicare_testimonial_content .customizer-repeater-new-field,#customize-control-spice_software_team_content .customizer-repeater-new-field,#customize-control-spice_software_testimonial_content .customizer-repeater-new-field,#customize-control-spiko_team_content .customizer-repeater-new-field,#customize-control-spiko_testimonial_content .customizer-repeater-new-field', function () {
+theme_conrols.on('click', '#customize-control-busicare_team_content .customizer-repeater-new-field,#customize-control-busicare_testimonial_content .customizer-repeater-new-field,#customize-control-spice_software_team_content .customizer-repeater-new-field,#customize-control-spice_software_testimonial_content .customizer-repeater-new-field,#customize-control-spiko_team_content .customizer-repeater-new-field,#customize-control-spiko_testimonial_content .customizer-repeater-new-field,#customize-control-wpkites_team_content .customizer-repeater-new-field,#customize-control-wpkites_testimonial_content .customizer-repeater-new-field,#customize-control-wphester_team_content .customizer-repeater-new-field,#customize-control-wphester_testimonial_content .customizer-repeater-new-field,#customize-control-wpblack_team_content .customizer-repeater-new-field,#customize-control-wpblack_testimonial_content .customizer-repeater-new-field', function () {
         var th = jQuery(this).parent();
         var id = 'customizer-repeater-' + customizer_repeater_uniqid();
         if (typeof th !== 'undefined') {

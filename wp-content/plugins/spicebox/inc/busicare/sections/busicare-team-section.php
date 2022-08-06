@@ -6,7 +6,7 @@ $team_options = get_theme_mod('busicare_team_content');
 $team_nav_style = get_theme_mod('team_nav_style', 'bullets');
 $isRTL = (is_rtl()) ? (bool) true : (bool) false;
 $teamsettings = array('teamcarouselid' => '#team-carousel','team_nav_style' => $team_nav_style, 'rtl' => $isRTL);
-wp_register_script('busicare-team', SPICEB_PLUGIN_URL . '/inc/busicare/js/front-page/team.js', array('jquery'));
+wp_register_script('busicare-team', SPICEB_PLUGIN_URL . 'inc/busicare/js/front-page/team.js', array('jquery'));
 wp_localize_script('busicare-team', 'team_settings', $teamsettings);
 wp_enqueue_script('busicare-team');
 
@@ -209,7 +209,7 @@ if ($team_section_enable != false) {?>
                                     <?php
                                     $icons = html_entity_decode($team_item->social_repeater);
                                     $icons_decoded = json_decode($icons, true);
-                                    $socails_counts = count($icons_decoded);
+                                    $socails_counts = $icons_decoded;
                                     if (!empty($socails_counts)) :
                                         ?> <div class="social-group"> 
                                             <?php if (!empty($icons_decoded)) : ?>

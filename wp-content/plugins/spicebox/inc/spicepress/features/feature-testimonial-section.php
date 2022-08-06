@@ -130,7 +130,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		'capability'     => 'edit_theme_options',
 		'default' => __('Ipsum dolor','spicebox'),
 		'sanitize_callback' => 'spiceb_spicepress_home_page_sanitize_text',
-		'transport'         => $selective_refresh,
+		//'transport'         => $selective_refresh,
 		));	
 		$wp_customize->add_control( 'home_testimonial_title',array(
 		'label'   => __('Title','spicebox'),

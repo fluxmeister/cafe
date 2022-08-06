@@ -9,7 +9,7 @@ $team_smooth_speed = get_theme_mod('team_smooth_speed', 1000);
 $team_nav_style = get_theme_mod('team_nav_style', 'bullets');
 $isRTL = (is_rtl()) ? (bool) true : (bool) false;
 $teamsettings = array('team_animation_speed' => $team_animation_speed, 'team_smooth_speed' => $team_smooth_speed, 'team_nav_style' => $team_nav_style, 'rtl' => $isRTL);
-wp_register_script('spiko-team', SPICEB_PLUGIN_URL . '/inc/spiko/js/front-page/team.js', array('jquery'));
+wp_register_script('spiko-team', SPICEB_PLUGIN_URL . 'inc/spiko/js/front-page/team.js', array('jquery'));
 wp_localize_script('spiko-team', 'team_settings', $teamsettings);
 wp_enqueue_script('spiko-team');
 
@@ -212,7 +212,7 @@ endif;
                                         <?php
                                     $icons = html_entity_decode($team_item->social_repeater);
                                     $icons_decoded = json_decode($icons, true);
-                                    $socails_counts = count($icons_decoded);
+                                    $socails_counts = $icons_decoded;
                                     if (!empty($socails_counts)) :
                                         if (!empty($icons_decoded)) : ?>
                                             <ul class="list-inline list-unstyled ml-0 mt-3 mb-1">

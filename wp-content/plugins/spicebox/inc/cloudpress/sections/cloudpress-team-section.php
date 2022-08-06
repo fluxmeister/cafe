@@ -11,7 +11,7 @@ if ( ! function_exists( 'spiceb_cloudpress_team' ) ) :
           'team_smooth_speed'     => $team_smooth_speed,
           'team_nav_style'        => $team_nav_style
         );
-        wp_register_script('cloudpress-team', SPICEB_PLUGIN_URL.'/inc/js/cloudpress/team.js',array('jquery'));
+        wp_register_script('cloudpress-team', SPICEB_PLUGIN_URL.'inc/js/cloudpress/team.js',array('jquery'));
         wp_localize_script('cloudpress-team','team_settings',$teamsettings);
         wp_enqueue_script('cloudpress-team');
         if($team_section_enable !='off')

@@ -1,5 +1,4 @@
 <?php
-
 /*
 Widget Name: Headline
 Description: A headline to headline all headlines.
@@ -16,7 +15,8 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 			'sow-headline',
 			__( 'SiteOrigin Headline', 'so-widgets-bundle' ),
 			array(
-				'description' => __( 'A headline to headline all headlines.', 'so-widgets-bundle' )
+				'description' => __( 'A headline to headline all headlines.', 'so-widgets-bundle' ),
+				'help' => 'https://siteorigin.com/widgets-bundle/headline-widget/',
 			),
 			array(),
 			false,
@@ -24,9 +24,8 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 		);
 	}
 
-	function initialize(){
+	function initialize() {
 		add_action( 'siteorigin_widgets_enqueue_frontend_scripts_' . $this->id_base, array( $this, 'enqueue_widget_scripts' ) );
-		
 		add_filter( 'siteorigin_widgets_wrapper_classes_' . $this->id_base, array( $this, 'wrapper_class_filter' ), 10, 2 );
 		add_filter( 'siteorigin_widgets_wrapper_data_' . $this->id_base, array( $this, 'wrapper_data_filter' ), 10, 2 );
 	}
@@ -42,7 +41,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 		);
 	}
 
-	function get_widget_form(){
+	function get_widget_form() {
 		return array(
 			'headline' => array(
 				'type' => 'section',
@@ -78,11 +77,11 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'color' => array(
 						'type' => 'color',
-						'label' => __('Color', 'so-widgets-bundle'),
+						'label' => __( 'Color', 'so-widgets-bundle' ),
 					),
 					'hover_color' => array(
 						'type' => 'color',
-						'label' => __('Hover Color', 'so-widgets-bundle'),
+						'label' => __( 'Hover Color', 'so-widgets-bundle' ),
 					),
 					'font' => array(
 						'type' => 'font',
@@ -91,7 +90,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'font_size' => array(
 						'type' => 'measurement',
-						'label' => __('Font Size', 'so-widgets-bundle')
+						'label' => __( 'Font Size', 'so-widgets-bundle' )
 					),
 					'align' => array(
 						'type' => 'select',
@@ -116,11 +115,11 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'line_height' => array(
 						'type' => 'measurement',
-						'label' => __('Line Height', 'so-widgets-bundle')
+						'label' => __( 'Line Height', 'so-widgets-bundle' )
 					),
 					'margin' => array(
 						'type' => 'measurement',
-						'label' => __('Top and Bottom Margin', 'so-widgets-bundle'),
+						'label' => __( 'Top and Bottom Margin', 'so-widgets-bundle' ),
 						'default' => '',
 					),
 				)
@@ -132,7 +131,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 				'fields' => array(
 					'text' => array(
 						'type' => 'text',
-						'label' => __('Text', 'so-widgets-bundle')
+						'label' => __( 'Text', 'so-widgets-bundle' )
 					),
 					'destination_url' => array(
 						'type' => 'link',
@@ -159,11 +158,11 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'color' => array(
 						'type' => 'color',
-						'label' => __('Color', 'so-widgets-bundle'),
+						'label' => __( 'Color', 'so-widgets-bundle' ),
 					),
 					'hover_color' => array(
 						'type' => 'color',
-						'label' => __('Hover Color', 'so-widgets-bundle'),
+						'label' => __( 'Hover Color', 'so-widgets-bundle' ),
 					),
 					'font' => array(
 						'type' => 'font',
@@ -172,7 +171,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'font_size' => array(
 						'type' => 'measurement',
-						'label' => __('Font Size', 'so-widgets-bundle')
+						'label' => __( 'Font Size', 'so-widgets-bundle' )
 					),
 					'align' => array(
 						'type' => 'select',
@@ -197,11 +196,11 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'line_height' => array(
 						'type' => 'measurement',
-						'label' => __('Line Height', 'so-widgets-bundle')
+						'label' => __( 'Line Height', 'so-widgets-bundle' )
 					),
 					'margin' => array(
 						'type' => 'measurement',
-						'label' => __('Top and Bottom Margin', 'so-widgets-bundle'),
+						'label' => __( 'Top and Bottom Margin', 'so-widgets-bundle' ),
 						'default' => '',
 					),
 				)
@@ -216,21 +215,21 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 						'label' => __( 'Style', 'so-widgets-bundle' ),
 						'default' => 'solid',
 						'options' => array(
-							'none' => __('None', 'so-widgets-bundle'),
-							'solid' => __('Solid', 'so-widgets-bundle'),
-							'dotted' => __('Dotted', 'so-widgets-bundle'),
-							'dashed' => __('Dashed', 'so-widgets-bundle'),
-							'double' => __('Double', 'so-widgets-bundle'),
-							'groove' => __('Groove', 'so-widgets-bundle'),
-							'ridge' => __('Ridge', 'so-widgets-bundle'),
-							'inset' => __('Inset', 'so-widgets-bundle'),
-							'outset' => __('Outset', 'so-widgets-bundle'),
+							'none' => __( 'None', 'so-widgets-bundle' ),
+							'solid' => __( 'Solid', 'so-widgets-bundle' ),
+							'dotted' => __( 'Dotted', 'so-widgets-bundle' ),
+							'dashed' => __( 'Dashed', 'so-widgets-bundle' ),
+							'double' => __( 'Double', 'so-widgets-bundle' ),
+							'groove' => __( 'Groove', 'so-widgets-bundle' ),
+							'ridge' => __( 'Ridge', 'so-widgets-bundle' ),
+							'inset' => __( 'Inset', 'so-widgets-bundle' ),
+							'outset' => __( 'Outset', 'so-widgets-bundle' ),
 						)
 					),
 					'color' => array(
 						'type' => 'color',
-						'label' => __('Color', 'so-widgets-bundle'),
-						'default' => '#EEEEEE'
+						'label' => __( 'Color', 'so-widgets-bundle' ),
+						'default' => '#eee'
 					),
 					'thickness' => array(
 						'type' => 'slider',
@@ -241,7 +240,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'align' => array(
 						'type' => 'select',
-						'label' => __('Alignment', 'so-widgets-bundle'),
+						'label' => __( 'Alignment', 'so-widgets-bundle' ),
 						'default' => 'center',
 						'options' => array(
 							'center' => __( 'Center', 'so-widgets-bundle' ),
@@ -260,12 +259,12 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 					),
 					'width' => array(
 						'type' => 'measurement',
-						'label' => __('Divider Width', 'so-widgets-bundle'),
+						'label' => __( 'Divider Width', 'so-widgets-bundle' ),
 						'default' => '80%',
 					),
 					'margin' => array(
 						'type' => 'measurement',
-						'label' => __('Top and Bottom Margin', 'so-widgets-bundle'),
+						'label' => __( 'Top and Bottom Margin', 'so-widgets-bundle' ),
 						'default' => '',
 					),
 				)
@@ -315,7 +314,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 			'responsive_breakpoint' => $this->get_global_settings( 'responsive_breakpoint' ),
 		);
 
-		// All the headline attributes
+		// All the headline attributes.
 		$less_vars['headline_tag'] = isset( $instance['headline']['tag'] ) ? $instance['headline']['tag'] : false;
 		$less_vars['headline_hover_color'] = isset( $instance['headline']['hover_color'] ) ? $instance['headline']['hover_color'] : false;
 		$less_vars['headline_align'] = isset( $instance['headline']['align'] ) ? $instance['headline']['align'] : false;
@@ -325,7 +324,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 		$less_vars['headline_line_height'] = isset( $instance['headline']['line_height'] ) ? $instance['headline']['line_height'] : false;
 		$less_vars['headline_margin'] = isset( $instance['headline']['margin'] ) ? $instance['headline']['margin'] : false;
 
-		// Headline font family and weight
+		// Headline font family and weight.
 		if ( ! empty( $instance['headline']['font'] ) ) {
 			$font = siteorigin_widget_get_font( $instance['headline']['font'] );
 			$less_vars['headline_font'] = $font['family'];
@@ -335,7 +334,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 			}
 		}
 
-		// Set the sub headline attributes
+		// Set the sub headline attributes.
 		$less_vars['sub_headline_align'] = isset( $instance['sub_headline']['align'] ) ? $instance['sub_headline']['align'] : false;
 		$less_vars['sub_headline_mobile_align'] = isset( $instance['sub_headline']['mobile_align'] ) ? $instance['sub_headline']['mobile_align'] : false;
 		$less_vars['sub_headline_hover_color'] = isset( $instance['sub_headline']['hover_color'] ) ? $instance['sub_headline']['hover_color'] : false;
@@ -345,7 +344,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 		$less_vars['sub_headline_line_height'] = isset( $instance['sub_headline']['line_height'] ) ? $instance['sub_headline']['line_height'] : false;
 		$less_vars['sub_headline_margin'] = isset( $instance['sub_headline']['margin'] ) ? $instance['sub_headline']['margin'] : false;
 
-		// Sub headline font family and weight
+		// Sub headline font family and weight.
 		if ( ! empty( $instance['sub_headline']['font'] ) ) {
 			$font = siteorigin_widget_get_font( $instance['sub_headline']['font'] );
 			$less_vars['sub_headline_font'] = $font['family'];
@@ -375,7 +374,7 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 	 * @return array
 	 */
 	function get_template_variables( $instance, $args ) {
-		if( empty( $instance ) ) return array();
+		if ( empty( $instance ) ) return array();
 
 		return array(
 			'headline' => $instance['headline']['text'],
@@ -391,29 +390,29 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 		);
 	}
 
-	function wrapper_class_filter( $classes, $instance ){
-		if( ! empty( $instance[ 'fittext' ] ) ) {
+	function wrapper_class_filter( $classes, $instance ) {
+		if ( ! empty( $instance[ 'fittext' ] ) ) {
 			$classes[] = 'so-widget-fittext-wrapper';
 		}
 		return $classes;
 	}
 
 	function wrapper_data_filter( $data, $instance ) {
-		if( ! empty( $instance['fittext'] ) ) {
+		if ( ! empty( $instance['fittext'] ) ) {
 			$data['fit-text-compressor'] = $instance['fittext_compressor'];
 		}
 		return $data;
 	}
 	
 	function enqueue_widget_scripts( $instance ) {
-		if( ! empty( $instance['fittext'] ) || $this->is_preview( $instance ) ) {
+		if ( ! empty( $instance['fittext'] ) || $this->is_preview( $instance ) ) {
 			wp_enqueue_script( 'sowb-fittext' );
 		}
 	}
 
 	function modify_instance( $instance ) {
-		// Change the old divider weight into a divider thickness
-		if( isset( $instance['divider']['weight'] ) && ! isset( $instance['divider']['thickness'] ) ) {
+		// Change the old divider weight into a divider thickness.
+		if ( isset( $instance['divider']['weight'] ) && ! isset( $instance['divider']['thickness'] ) ) {
 			switch( $instance['divider']['weight'] ) {
 				case 'medium':
 					$instance['divider']['thickness'] = 3;
@@ -429,23 +428,23 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 			unset( $instance['divider']['weight'] );
 		}
 
-		// Change the old divider side margin into overall width
-		if( isset( $instance['divider']['side_margin'] ) && ! isset( $instance['divider']['width'] ) ) {
+		// Change the old divider side margin into overall width.
+		if ( isset( $instance['divider']['side_margin'] ) && ! isset( $instance['divider']['width'] ) ) {
 			global $content_width;
-			$value = (float) $instance['divider']['side_margin'];
+			$value = ( float ) $instance['divider']['side_margin'];
 
 			switch( $instance['divider']['side_margin_unit'] ) {
-				case 'px' :
+				case 'px':
 					$instance['divider']['width'] = ( ( !empty( $content_width ) ? $content_width : 960 ) - ( 2 * $value ) ) . 'px';
 					$instance['divider']['width_unit'] = 'px';
 					break;
 
-				case '%' :
-					$instance['divider']['width'] = ( 100 - (2 * $value) ) . '%';
+				case '%':
+					$instance['divider']['width'] = ( 100 - ( 2 * $value ) ) . '%';
 					$instance['divider']['width_unit'] = '%';
 					break;
 
-				default :
+				default:
 					$instance['divider']['width'] = '80%';
 					$instance['divider']['width_unit'] = '%';
 					break;
@@ -455,12 +454,12 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 			unset( $instance['divider']['side_margin_unit'] );
 		}
 
-		// Copy top margin over to bottom margin
-		if( isset( $instance['divider']['top_margin'] ) && ! isset( $instance['divider']['bottom_margin'] ) ) {
+		// Copy top margin over to bottom margin.
+		if ( isset( $instance['divider']['top_margin'] ) && ! isset( $instance['divider']['bottom_margin'] ) ) {
 			$instance['divider']['bottom_margin'] = $instance['divider']['top_margin'];
 			$instance['divider']['bottom_margin_unit'] = $instance['divider']['top_margin_unit'];
 		}
-		// Set Mobile alignment settings to same value as the Alignment for existing widgets
+		// Set Mobile alignment settings to same value as the Alignment for existing widgets.
 		if ( ! empty( $instance['headline']['align'] ) && empty( $instance['headline']['mobile_align'] ) ) {
 			$instance['headline']['mobile_align'] = $instance['headline']['align'];
 			$instance['sub_headline']['mobile_align'] = $instance['sub_headline']['align'];
@@ -471,4 +470,4 @@ class SiteOrigin_Widget_Headline_Widget extends SiteOrigin_Widget {
 	}
 }
 
-siteorigin_widget_register('sow-headline', __FILE__, 'SiteOrigin_Widget_Headline_Widget');
+siteorigin_widget_register( 'sow-headline', __FILE__, 'SiteOrigin_Widget_Headline_Widget' );

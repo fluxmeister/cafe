@@ -13,7 +13,7 @@ $testimonial_nav_style = get_theme_mod('testimonial_nav_style', 'bullets');
 
 $testimonial_settings = array('design_id' => '#testimonial-carousel', 'slide_items' => $slide_items, 'animationSpeed' => $testimonial_animation_speed, 'smoothSpeed' => $testimonial_smooth_speed, 'testimonial_nav_style' => $testimonial_nav_style, 'rtl' => $isRTL);
 
-wp_register_script('spice-software-testimonial', SPICEB_PLUGIN_URL . '/inc/spice-software/js/front-page/testi.js', array('jquery'));
+wp_register_script('spice-software-testimonial', SPICEB_PLUGIN_URL . 'inc/spice-software/js/front-page/testi.js', array('jquery'));
 wp_localize_script('spice-software-testimonial', 'testimonial_settings', $testimonial_settings);
 wp_enqueue_script('spice-software-testimonial');
 

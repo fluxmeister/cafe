@@ -2,7 +2,7 @@
 /*
 Plugin Name: SpiceBox
 Description: Enhances SpiceThemes with extra functionality.
-Version: 1.9
+Version: 2.1.2
 Author: Spicethemes
 Author URI: https://spicethemes.com
 Text Domain: spicebox
@@ -291,6 +291,143 @@ function spiceb_activate() {
 		endif;
 	}
 
+//WPKites
+	if ( 'WPKites' == $theme->name || 'WPKites Child' == $theme->name ||  'WPKites Dark' == $theme->name){
+		
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		
+		if ( ! is_plugin_active( 'wpkites-plus/wpkites-plus.php' ) ):
+
+			require_once('inc/controls/customizer-alpha-color-picker/class-spicepress-customize-alpha-color-control.php');
+	        require_once('inc/controls/customizer-repeater/functions.php');
+	        require ('inc/controls/customizer-text-radio/customizer-text-radio.php');
+
+			if ( ! function_exists( 'spiceb_wpkites_customize_register' ) ) :
+				function spiceb_wpkites_customize_register($wp_customize){
+					
+					$selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' : 'refresh';
+					$sections_customizer_data = array('slider','services','team','news','testimonial');	
+															
+						
+					
+					if (!empty($sections_customizer_data))
+					{ 
+						foreach($sections_customizer_data as $section_customizer_data)
+						{ 
+							require_once('inc/wpkites/customizer/'.$section_customizer_data.'-section.php');
+						}	
+					}
+					$wp_customize->remove_control('header_textcolor');
+					
+				}
+				add_action( 'customize_register', 'spiceb_wpkites_customize_register' );
+			endif;
+				
+			$sections_data = array('slider','services','team','news','testimonial');
+				
+			if (!empty($sections_data)){ 
+
+				foreach($sections_data as $section_data){ 
+					require_once('inc/wpkites/sections/wpkites-'.$section_data.'-section.php');
+				}	
+			}
+				
+			require_once('inc/wpkites/customizer.php');
+		
+		endif;
+	}
+
+//WPHester
+	if ( 'WPHester' == $theme->name || 'WPHester Child' == $theme->name ||  'WPHester Dark' == $theme->name){
+		
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		
+		if ( ! is_plugin_active( 'wphester-plus/wphester-plus.php' ) ):
+
+			require_once('inc/controls/customizer-alpha-color-picker/class-spicepress-customize-alpha-color-control.php');
+	        require_once('inc/controls/customizer-repeater/functions.php');
+	        require ('inc/controls/customizer-text-radio/customizer-text-radio.php');
+
+			if ( ! function_exists( 'spiceb_wphester_customize_register' ) ) :
+				function spiceb_wphester_customize_register($wp_customize){
+					
+					$selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' : 'refresh';
+					$sections_customizer_data = array('slider','services','testimonial','team','news');	
+															
+						
+					
+					if (!empty($sections_customizer_data))
+					{ 
+						foreach($sections_customizer_data as $section_customizer_data)
+						{ 
+							require_once('inc/wphester/customizer/'.$section_customizer_data.'-section.php');
+						}	
+					}
+					$wp_customize->remove_control('header_textcolor');
+					
+				}
+				add_action( 'customize_register', 'spiceb_wphester_customize_register' );
+			endif;
+				
+			$sections_data = array('slider','services','testimonial','team','news');
+				
+			if (!empty($sections_data)){ 
+
+				foreach($sections_data as $section_data){ 
+					require_once('inc/wphester/sections/wphester-'.$section_data.'-section.php');
+				}	
+			}
+				
+			require_once('inc/wphester/customizer.php');
+		
+		endif;
+	}
+
+//WPBlack
+	if ( 'WPBlack' == $theme->name || 'WPBlack Child' == $theme->name ||  'WPBlack Dark' == $theme->name){
+		
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		
+		if ( ! is_plugin_active( 'wpblack-plus/wpblack-plus.php' ) ):
+
+			require_once('inc/controls/customizer-alpha-color-picker/class-spicepress-customize-alpha-color-control.php');
+	        require_once('inc/controls/customizer-repeater/functions.php');
+	        require ('inc/controls/customizer-text-radio/customizer-text-radio.php');
+
+			if ( ! function_exists( 'spiceb_wpblack_customize_register' ) ) :
+				function spiceb_wpblack_customize_register($wp_customize){
+					
+					$selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' : 'refresh';
+					$sections_customizer_data = array('slider','services','team','news','testimonial');	
+															
+						
+					
+					if (!empty($sections_customizer_data))
+					{ 
+						foreach($sections_customizer_data as $section_customizer_data)
+						{ 
+							require_once('inc/wpblack/customizer/'.$section_customizer_data.'-section.php');
+						}	
+					}
+					$wp_customize->remove_control('header_textcolor');
+					
+				}
+				add_action( 'customize_register', 'spiceb_wpblack_customize_register' );
+			endif;
+				
+			$sections_data = array('slider','services','team','news','testimonial');
+				
+			if (!empty($sections_data)){ 
+
+				foreach($sections_data as $section_data){ 
+					require_once('inc/wpblack/sections/wpblack-'.$section_data.'-section.php');
+				}	
+			}
+				
+			require_once('inc/wpblack/customizer.php');
+		
+		endif;
+	}
 }
 add_action( 'init', 'spiceb_activate' );
 
@@ -418,6 +555,47 @@ if ( 'Spiko' == $theme->name || 'Spiko Child' == $theme->name  ||  'Spiko Dark' 
 	}
 }
 
+// WPKites
+if ( 'WPKites' == $theme->name || 'WPKites Child' == $theme->name  ||  'WPKites Dark' == $theme->name){
+	register_activation_hook( __FILE__, 'spiceb_wpkites_install_function');
+	function spiceb_wpkites_install_function(){	
+		$item_details_page = get_option('item_details_page'); 
+	    if(!$item_details_page){
+			require_once('inc/wpkites/default-pages/upload-media.php');
+			require_once('inc/wpkites/default-pages/home-page.php');
+			require_once('inc/wpkites/default-pages/blog-page.php');
+			update_option( 'item_details_page', 'Done' );
+	    }
+	}
+}
+
+// WPHester
+if ( 'WPHester' == $theme->name || 'WPHester Child' == $theme->name  ||  'WPHester Dark' == $theme->name){
+	register_activation_hook( __FILE__, 'spiceb_kites_install_function');
+	function spiceb_kites_install_function(){	
+		$item_details_page = get_option('item_details_page'); 
+	    if(!$item_details_page){
+			require_once('inc/wphester/default-pages/upload-media.php');
+			require_once('inc/wphester/default-pages/home-page.php');
+			require_once('inc/wphester/default-pages/blog-page.php');
+			update_option( 'item_details_page', 'Done' );
+	    }
+	}
+}
+
+// WPBlack
+if ( 'WPBlack' == $theme->name || 'WPBlack Child' == $theme->name  ||  'WPBlack Dark' == $theme->name){
+	register_activation_hook( __FILE__, 'spiceb_wpblack_install_function');
+	function spiceb_wpblack_install_function(){	
+		$item_details_page = get_option('item_details_page'); 
+	    if(!$item_details_page){
+			require_once('inc/wpblack/default-pages/upload-media.php');
+			require_once('inc/wpblack/default-pages/home-page.php');
+			require_once('inc/wpblack/default-pages/blog-page.php');
+			update_option( 'item_details_page', 'Done' );
+	    }
+	}
+}
 
 //Sanatize text
 function spiceb_spicepress_home_page_sanitize_text( $input ) {
@@ -466,6 +644,36 @@ function spiceb_spiko_home_page_sanitize_text($input){
 }
 
 function spiceb_spiko_sanitize_checkbox($checked) {
+    // Boolean check.
+    return ( ( isset($checked) && true == $checked ) ? true : false );
+}
+
+//Sanatize for wpkites theme
+function spiceb_wpkites_home_page_sanitize_text($input){
+			return wp_kses_post( force_balance_tags( $input ) );
+}
+
+function spiceb_wpkites_sanitize_checkbox($checked) {
+    // Boolean check.
+    return ( ( isset($checked) && true == $checked ) ? true : false );
+}
+
+//Sanatize for hester theme
+function spiceb_wphester_home_page_sanitize_text($input){
+			return wp_kses_post( force_balance_tags( $input ) );
+}
+
+function spiceb_wphester_sanitize_checkbox($checked) {
+    // Boolean check.
+    return ( ( isset($checked) && true == $checked ) ? true : false );
+}
+
+//Sanatize for wpblack theme
+function spiceb_wpblack_home_page_sanitize_text($input){
+			return wp_kses_post( force_balance_tags( $input ) );
+}
+
+function spiceb_wpblack_sanitize_checkbox($checked) {
     // Boolean check.
     return ( ( isset($checked) && true == $checked ) ? true : false );
 }

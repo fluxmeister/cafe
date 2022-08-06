@@ -1,0 +1,23 @@
+.oxygen-admin-screen-design-set-install-wizard *,
+.oxygen-metabox,
+body.oxygen-builder-body,
+#wp-link-wrap,
+div.oxygen-data-dialog,
+.ct-panel-elements-managers,
+.oxygen-classes-dropdown-input, 
+.oxygen-select-box-option input,
+.oxygen-add-searchbar,
+#ct-sidepanel *,
+.oxygen-active-selector-box input,
+#oxygen-sidebar input,
+.ct-dom-tree-parent.ct-dom-tree-node-anchor,
+.ct-dom-tree-node-details ul.ct-dom-tree-node-details-list li .ct-attribute,
+#oxygen-topbar,
+#oxygen-sidebar,
+.oxygen-add-section-library-flyout-panel,
+#wp-link-wrap .oxygen-dynamic-data-browse,
+.oxygen-global-colors-new-color-dialog,
+.oxygen-resize-box-breadcrumbs
+ {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif!important;
+}

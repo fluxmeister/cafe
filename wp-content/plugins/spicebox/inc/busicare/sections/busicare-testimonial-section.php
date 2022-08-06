@@ -7,7 +7,7 @@ function spiceb_busicare_testimonial_section()
     $isRTL = (is_rtl()) ? (bool) true : (bool) false;
     $testimonial_nav_style = get_theme_mod('testimonial_nav_style', 'bullets');
     $testimonialsettings = array('design_id' => '#testimonial-carousel', 'testimonial_nav_style' => $testimonial_nav_style, 'rtl' => $isRTL);
-    wp_register_script('busicare-testimonial', SPICEB_PLUGIN_URL . '/inc/busicare/js/front-page/testi.js', array('jquery'));
+    wp_register_script('busicare-testimonial', SPICEB_PLUGIN_URL . 'inc/busicare/js/front-page/testi.js', array('jquery'));
     wp_localize_script('busicare-testimonial', 'testimonial_settings', $testimonialsettings);
     wp_enqueue_script('busicare-testimonial');
 $home_testimonial_section_title = get_theme_mod('home_testimonial_section_title', __('Nam Viverra Iaculis Finibus', 'spicebox'));
@@ -105,7 +105,7 @@ if(get_theme_mod('testimonial_section_enable',true)==true):?>
                     if ($home_testimonial_clientname != '' || $home_testimonial_designation != '' ) { ?>                              
                         <figcaption>
                             <?php if (!empty($home_testimonial_designation)): ?>
-                            <a href="<?php if (empty($home_testimonial_link)) {echo '#';} else { echo esc_url($home_testimonial_link);}?>" <?php if($open_new_tab==true) { ?> target="_blank"<?php } ?>>
+                            <a href="<?php if (empty($home_testimonial_link)) {echo '#';} else { echo esc_url($home_testimonial_link);}?>" <?php if($open_new_tab=='yes') { ?> target="_blank"<?php } ?>>
                                     <cite class="name"><?php echo esc_html($home_testimonial_clientname); ?></cite></a>
                             <?php endif; ?>
                             <?php if (!empty($home_testimonial_designation)): ?>

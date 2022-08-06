@@ -238,6 +238,7 @@ abstract class SiteOrigin_Widget_Base_Slider extends SiteOrigin_Widget {
 			'nav_always_show_mobile'   => ! empty( $controls['nav_always_show_mobile'] ) ? true : '',
 			'breakpoint'               => ! empty( $controls['breakpoint'] ) ? $controls['breakpoint'] : '780px',
 			'unmute'                   => ! empty( $controls['unmute'] ),
+			'anchor'                   => ! empty( $controls['anchor'] ) ? $controls['anchor'] : null,
 		);
 
 		// Add the unmute translations.
@@ -348,7 +349,9 @@ abstract class SiteOrigin_Widget_Base_Slider extends SiteOrigin_Widget {
 			foreach ( $migrate_layout_settings as $setting => $sub_section ) {
 				if ( is_array( $sub_section ) ) {
 					foreach ( $sub_section as $responsive_setting ) {
-						$instance['layout'][ $setting ][ $responsive_setting ] = $instance['design'][ $responsive_setting ];
+						if ( ! empty( $instance['design'][ $responsive_setting ] ) ) {
+							$instance['layout'][ $setting ][ $responsive_setting ] = $instance['design'][ $responsive_setting ];
+						}
 					}
 				} elseif ( ! empty( $instance['design'][ $setting ] ) ) {
 					$instance['layout'][ $setting ] = $instance['design'][ $setting ];
@@ -361,9 +364,9 @@ abstract class SiteOrigin_Widget_Base_Slider extends SiteOrigin_Widget {
 		return $instance;
 	}
 
-	function render_template( $controls, $frames ){
+	function render_template( $controls, $frames, $layout = array() ){
 		$this->render_template_part('before_slider', $controls, $frames);
-		$this->render_template_part('before_slides', $controls, $frames);
+		$this->render_template_part( 'before_slides', $controls, $frames, $layout );
 
 		foreach( $frames as $i => $frame ) {
 			$this->render_frame( $i, $frame, $controls );
@@ -374,7 +377,7 @@ abstract class SiteOrigin_Widget_Base_Slider extends SiteOrigin_Widget {
 		$this->render_template_part('after_slider', $controls, $frames);
 	}
 
-	function render_template_part( $part, $controls, $frames ) {
+	function render_template_part( $part, $controls, $frames, $layout = array() ) {
 		switch( $part ) {
 			case 'before_slider':
 				?><div class="sow-slider-base" style="display: none"><?php
@@ -389,7 +392,15 @@ abstract class SiteOrigin_Widget_Base_Slider extends SiteOrigin_Widget {
 				if ( $settings['swipe'] ) {
 					wp_enqueue_script( 'sow-slider-slider-cycle2-swipe' );
 				}
-				?><ul class="sow-slider-images" data-settings="<?php echo esc_attr( json_encode($settings) ) ?>"><?php
+
+				if ( ! empty( $layout['desktop'] ) && ! empty( $layout['desktop']['height'] ) ) {
+					$height = $instance['layout']['desktop']['height'];
+				}
+				?><ul
+					class="sow-slider-images"
+					data-settings="<?php echo esc_attr( json_encode($settings) ) ?>"
+					<?php echo ! empty( $layout['desktop'] ) && ! empty( $layout['desktop']['height'] ) ? 'style="min-height: ' . esc_attr( $layout['desktop']['height'] ) . '"' : ''; ?>
+				><?php
 				break;
 			case 'after_slides':
 				?></ul><?php
@@ -574,7 +585,7 @@ abstract class SiteOrigin_Widget_Base_Slider extends SiteOrigin_Widget {
 					$video_file = sow_esc_url( $video['url'] );
 				} else {
 					echo '<div class="sow-slide-video-oembed" ' . $opacity . '>';
-					echo $so_video->get_video_oembed( $video['url'], ! empty( $video['autoplay'] ), false, $loop, $opacity );
+					echo $so_video->get_video_oembed( $video['url'], ! empty( $video['autoplay'] ), false, $loop, true );
 					echo '</div>';
 					continue;
 				}

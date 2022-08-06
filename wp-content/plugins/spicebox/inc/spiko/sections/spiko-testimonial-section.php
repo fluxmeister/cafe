@@ -16,7 +16,7 @@ if ('Spiko Dark' == $theme->name){
 }else{
     $testimonial_settings = array('design_id' => '#testimonial-carousel1', 'slide_items' => $slide_items, 'animationSpeed' => $testimonial_animation_speed, 'smoothSpeed' => $testimonial_smooth_speed, 'testimonial_nav_style' => $testimonial_nav_style, 'rtl' => $isRTL);
 }
-wp_register_script('spiko-testimonial', SPICEB_PLUGIN_URL . '/inc/spiko/js/front-page/testi.js', array('jquery'));
+wp_register_script('spiko-testimonial', SPICEB_PLUGIN_URL . 'inc/spiko/js/front-page/testi.js', array('jquery'));
 wp_localize_script('spiko-testimonial', 'testimonial_settings', $testimonial_settings);
 wp_enqueue_script('spiko-testimonial');
 

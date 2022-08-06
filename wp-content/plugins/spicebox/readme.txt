@@ -2,8 +2,8 @@
 Contributors: spicethemes
 Tags: widget, admin, widgets
 Requires at least: 3.3+
-Tested up to: 5.8
-Stable tag: 1.9
+Tested up to: 6.0
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -249,6 +249,20 @@ Fixed minor issues of HoneyPress child themes.
 = 1.9 =
 1. Added homepage sections for Spiko theme.
 2. Added homepage sections for Spiko Dark child theme.
+
+= 2.0 =
+1. Added homepage sections for WPKites theme.
+2. Fixed the issues with PHP 8.
+
+= 2.1 =
+1. Added homepage sections for WPHester theme.
+2. Added homepage sections for WPBlack theme.
+
+= 2.1.1 =
+1. Fixed enqueue script url issues.
+
+= 2.1.2 =
+1. Added freemius directory.
 
 =======External resources=======
 
